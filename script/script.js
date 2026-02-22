@@ -47,85 +47,79 @@
 
 
 
-// Selecting key elements
 const cardContainer = document.querySelector('.card-container');
-const totalCountEl = document.getElementById('total-count');
-const interviewCountEl = document.getElementById('interview-count');
-const rejectedCountEl = document.getElementById('rejected-count');
-const jobsCountEl = document.getElementById('jobs-count');
+const totalCountElement = document.getElementById('total-count');
+const interviewCountElement = document.getElementById('interview-count');
+const rejectedCountElement = document.getElementById('rejected-count');
+const jobCountElement = document.getElementById('jobs-count')
 
-// Tab buttons
-const allBtn = document.getElementById('all-btn');
-const interviewTabBtn = document.getElementById('interview-btn');
-const rejectTabBtn = document.getElementById('reject-btn');
 
-function updateDashboard() {
+// Tab er button gula k dhorte hobe
+const allButton = document.getElementById('all-btn');
+const interviewButton = document.getElementById('interview-btn');
+const rejectedButton = document.getElementById('reject-btn');
+
+
+function changeDashboard() {
     const allCards = document.querySelectorAll('.job-card');
     const interviewCards = document.querySelectorAll('.job-card[data-status="interview"]');
     const rejectedCards = document.querySelectorAll('.job-card[data-status="rejected"]');
 
-    // Update Dashboard Counts
-    totalCountEl.innerText = allCards.length;
-    interviewCountEl.innerText = interviewCards.length;
-    rejectedCountEl.innerText = rejectedCards.length;
+    totalCountElement.innerText = allCards.length;
+    interviewCountElement.innerText = interviewCards.length;
+    rejectedCountElement.innerText = rejectedCards.length;
 
-    // Update "Available Jobs" count based on current filter/total
-    jobsCountEl.innerText = `${allCards.length} Jobs`;
+
+    jobCountElement.innerText = `${allCards.length} jobs`
 }
 
-function filterJobs(status) {
+function filterJobs(jobs) {
     const allCards = document.querySelectorAll('.job-card');
     allCards.forEach(card => {
-        if (status === 'all') {
-            card.style.display = 'block';
-        } else {
-            card.style.display = card.getAttribute('data-status') === status ? 'block' : 'none';
+        if (jobs === 'all') {
+            card.style.display = 'block'
         }
-    });
+        else {
+            card.style.display = card.getAttribute('data-status') === jobs ? 'block' : 'none'
+        }
+    })
 
-    // Update Tab UI (Active state)
-    [allBtn, interviewTabBtn, rejectTabBtn].forEach(btn => btn.classList.replace('btn-info', 'btn-soft'));
+    [allButton, interviewButton, rejectedButton].forEach(btn => btn.classList.replace('btn-info', 'btn-soft'));
     event.currentTarget.classList.replace('btn-soft', 'btn-info');
 }
 
-// Event Delegation for Card Buttons
 cardContainer.addEventListener('click', (e) => {
     const card = e.target.closest('.job-card');
     if (!card) return;
 
-    const statusBadge = card.querySelector('span');
-    const currentStatus = card.getAttribute('data-status');
+    const spanBadge = card.querySelector('span');
+    const currentJobs = card.getAttribute('data-status');
 
-    // Handle Interview Button Click
     if (e.target.classList.contains('interview-btn')) {
         card.setAttribute('data-status', 'interview');
-        statusBadge.innerText = 'Interview';
-        statusBadge.className = "text-white font-medium bg-success w-[150px] py-2 text-center rounded-md mb-4 inline-block";
+        spanBadge.innerText = 'Interview';
+        spanBadge.className = 'text-white font-medium bg-success w-[150px] py-2 text-center rounded-md mb-4 inline-block';
     }
 
-    // Handle Rejected Button Click
-    if (e.target.classList.contains('reject-btn')) {
+    if(e.target.classList.contains('reject-btn')){
         card.setAttribute('data-status', 'rejected');
-        statusBadge.innerText = 'Rejected';
-        statusBadge.className = "text-white font-medium bg-error w-[150px] py-2 text-center rounded-md mb-4 inline-block";
+        spanBadge.innerText = 'Rejected';
+        spanBadge.className = 'text-white font-medium bg-error w-[150px] py-2 text-center rounded-md mb-4 inline-block';
     }
 
-    // Handle Delete Button Click
     if (e.target.classList.contains('delete-btn')) {
         card.remove();
+
     }
+    changeDashboard();
+})
 
-    updateDashboard();
-});
+allButton.addEventListener('click', (e)=> filterJobs('all'));
+interviewButton.addEventListener('click', (e)=> filterJobs('interview'));
+rejectedButton.addEventListener('click', (e)=> filterJobs('rejected'));
 
-// Tab Listeners
-allBtn.addEventListener('click', (e) => filterJobs('all'));
-interviewTabBtn.addEventListener('click', (e) => filterJobs('interview'));
-rejectTabBtn.addEventListener('click', (e) => filterJobs('rejected'));
 
-// Initial Count
-updateDashboard();
-
+changeDashboard();
 
 
 
