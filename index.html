@@ -33,15 +33,15 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 <div class="bg-base-200 rounded-lg shadow p-5">
                     <p class="text-[#323B49] font-medium mb-2">Total</p>
-                    <h2 class="text-primary font-bold text-2xl">8</h2>
+                    <h2 id="total-count" class="text-primary font-bold text-2xl">8</h2>
                 </div>
                 <div class="bg-base-200 rounded-lg shadow p-5">
                     <p class="text-[#323B49] font-medium mb-2">Interview</p>
-                    <h2 class="text-success font-bold text-2xl">0</h2>
+                    <h2 id="interview-count" class="text-success font-bold text-2xl">0</h2>
                 </div>
                 <div class="bg-base-200 rounded-lg shadow p-5">
                     <p class="text-[#323B49] font-medium mb-2">Rejected</p>
-                    <h2 class="text-error font-bold text-2xl">0</h2>
+                    <h2 id="rejected-count" class="text-error font-bold text-2xl">0</h2>
                 </div>
             </div>
         </section>
@@ -56,25 +56,25 @@
 
             <div class="header flex justify-between mb-4">
                 <h2 class="text-2xl text-[#002C5C] font-bold">Available Jobs</h2>
-                <p class="font-medium text-[#64748B]">8 Jobs</p>
+                <p id="jobs-count" class="font-medium text-[#64748B]">8 Jobs</p>
             </div>
 
 
             <div class="tabs tabs-boxed flex gap-2 mb-4">
-                <button class="btn btn-info selected w-20">All</button>
-                <button class="btn btn-soft w-20 text-gray-500">Interview</button>
-                <button class="btn btn-soft w-20 text-gray-500">Rejected</button>
+                <button id="all-btn" class="btn btn-info selected w-20">All</button>
+                <button id="interview-btn" class="interview-btn btn btn-soft w-20 text-gray-500">Interview</button>
+                <button id="reject-btn" class="reject-btn btn btn-soft w-20 text-gray-500">Rejected</button>
             </div>
 
 
             <div class="card-container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
-                <div class="card border border-[#F1F2F4] p-4">
+                <div class="card job-card border border-[#F1F2F4] p-4" data-status="all">
                     <div class="flex items-center justify-between">
                         <div class="left mb-5">
                             <h2 class="font-bold text-[#002C5C] text-xl">Mobile First Corp</h2>
                             <p class="text-[#64748B] font-medium">React Native Developer</p>
                         </div>
-                        <div class="right"><i class="fa-solid fa-trash-can"></i></div>
+                        <div class="right"><i class="fa-solid fa-trash-can delete-btn cursor-pointer"></i></div>
                     </div>
                     <p class="text-[#64748B] mb-5">Remote
                         •
@@ -85,17 +85,17 @@
                         Applied</span>
 
                     <div>
-                        <button class="btn btn-success btn-soft border border-green-400">Interview</button>
-                        <button class="btn btn-error btn-soft border border-red-400">Rejected</button>
+                        <button class="btn btn-success interview-btn btn-soft border border-green-400">Interview</button>
+                        <button class="btn btn-error reject-btn btn-soft border border-red-400">Rejected</button>
                     </div>
                 </div>
-                <div class="card border border-[#F1F2F4] p-4">
+                <div class="card job-card border border-[#F1F2F4] p-4" data-status="all">
                     <div class="flex items-center justify-between">
                         <div class="left mb-5">
                             <h2 class="font-bold text-[#002C5C] text-xl">WebFlow Agency</h2>
                             <p class="text-[#64748B] font-medium">Web Designer & Developer</p>
                         </div>
-                        <div class="right"><i class="fa-solid fa-trash-can"></i></div>
+                        <div class="right"><i class="fa-solid fa-trash-can delete-btn cursor-pointer"></i></div>
                     </div>
                     <p class="text-[#64748B] mb-5">Los Angeles, CA
                         •
@@ -106,17 +106,17 @@
                         Applied</span>
 
                     <div>
-                        <button class="btn btn-success btn-soft border border-green-400">Interview</button>
-                        <button class="btn btn-error btn-soft border border-red-400">Rejected</button>
+                        <button class="btn btn-success interview-btn btn-soft border border-green-400">Interview</button>
+                        <button class="btn btn-error reject-btn btn-soft border border-red-400">Rejected</button>
                     </div>
                 </div>
-                <div class="card border border-[#F1F2F4] p-4">
+                <div class="card job-card border border-[#F1F2F4] p-4" data-status="all">
                     <div class="flex items-center justify-between">
                         <div class="left mb-5">
                             <h2 class="font-bold text-[#002C5C] text-xl">DataViz Solutions</h2>
                             <p class="text-[#64748B] font-medium">Data Visualization Specialist</p>
                         </div>
-                        <div class="right"><i class="fa-solid fa-trash-can"></i></div>
+                        <div class="right"><i class="fa-solid fa-trash-can delete-btn cursor-pointer"></i></div>
                     </div>
                     <p class="text-[#64748B] mb-5">Boston, MA
                         •
@@ -129,17 +129,17 @@
                         skills: D3.js, React, and strong analytical thinking.
                     </p>
                     <div>
-                        <button class="btn btn-success btn-soft border border-green-400">Interview</button>
-                        <button class="btn btn-error btn-soft border border-red-400">Rejected</button>
+                        <button class="btn btn-success interview-btn btn-soft border border-green-400">Interview</button>
+                        <button class="btn btn-error reject-btn btn-soft border border-red-400">Rejected</button>
                     </div>
                 </div>
-                <div class="card border border-[#F1F2F4] p-4">
+                <div class="card job-card border border-[#F1F2F4] p-4" data-status="all">
                     <div class="flex items-center justify-between">
                         <div class="left mb-5">
                             <h2 class="font-bold text-[#002C5C] text-xl">CloudFirst Inc</h2>
                             <p class="text-[#64748B] font-medium">Backend Developer</p>
                         </div>
-                        <div class="right"><i class="fa-solid fa-trash-can"></i></div>
+                        <div class="right"><i class="fa-solid fa-trash-can delete-btn cursor-pointer"></i></div>
                     </div>
                     <p class="text-[#64748B] mb-5">Seattle, WA
                         •
@@ -151,17 +151,17 @@
                     <p class="text-[#323B49] mb-4">Design and maintain scalable backend systems using Python and AWS.
                         Work with modern DevOps practices and cloud infrastructure.</p>
                     <div>
-                        <button class="btn btn-success btn-soft border border-green-400">Interview</button>
-                        <button class="btn btn-error btn-soft border border-red-400">Rejected</button>
+                        <button class="btn btn-success interview-btn btn-soft border border-green-400">Interview</button>
+                        <button class="btn btn-error reject-btn btn-soft border border-red-400">Rejected</button>
                     </div>
                 </div>
-                <div class="card border border-[#F1F2F4] p-4">
+                <div class="card job-card border border-[#F1F2F4] p-4" data-status="all">
                     <div class="flex items-center justify-between">
                         <div class="left mb-5">
                             <h2 class="font-bold text-[#002C5C] text-xl">Innovation Labs</h2>
                             <p class="text-[#64748B] font-medium">UI/UX Engineer</p>
                         </div>
-                        <div class="right"><i class="fa-solid fa-trash-can"></i></div>
+                        <div class="right"><i class="fa-solid fa-trash-can delete-btn cursor-pointer"></i></div>
                     </div>
                     <p class="text-[#64748B] mb-5">Austin, TX
                         •
@@ -173,17 +173,17 @@
                     <p class="text-[#323B49] mb-4">Create beautiful and functional user interfaces for our suite of
                         products. Strong design skills and frontend development expertise required.</p>
                     <div>
-                        <button class="btn btn-success btn-soft border border-green-400">Interview</button>
-                        <button class="btn btn-error btn-soft border border-red-400">Rejected</button>
+                        <button class="btn btn-success interview-btn btn-soft border border-green-400">Interview</button>
+                        <button class="btn btn-error reject-btn btn-soft border border-red-400">Rejected</button>
                     </div>
                 </div>
-                <div class="card border border-[#F1F2F4] p-4">
+                <div class="card job-card border border-[#F1F2F4] p-4" data-status="all">
                     <div class="flex items-center justify-between">
                         <div class="left mb-5">
                             <h2 class="font-bold text-[#002C5C] text-xl">MegaCorp Solutions</h2>
                             <p class="text-[#64748B] font-medium">JavaScript Developer</p>
                         </div>
-                        <div class="right"><i class="fa-solid fa-trash-can"></i></div>
+                        <div class="right"><i class="fa-solid fa-trash-can delete-btn cursor-pointer"></i></div>
                     </div>
                     <p class="text-[#64748B] mb-5">New York, NY
                         •
@@ -196,17 +196,17 @@
                         We offer competitive compensation, health insurance, and professional development opportunities.
                     </p>
                     <div>
-                        <button class="btn btn-success btn-soft border border-green-400">Interview</button>
-                        <button class="btn btn-error btn-soft border border-red-400">Rejected</button>
+                        <button class="btn btn-success interview-btn btn-soft border border-green-400">Interview</button>
+                        <button class="btn btn-error reject-btn btn-soft border border-red-400">Rejected</button>
                     </div>
                 </div>
-                <div class="card border border-[#F1F2F4] p-4">
+                <div class="card job-card border border-[#F1F2F4] p-4" data-status="all">
                     <div class="flex items-center justify-between">
                         <div class="left mb-5">
                             <h2 class="font-bold text-[#002C5C] text-xl">StartupXYZ</h2>
                             <p class="text-[#64748B] font-medium">Full Stack Engineer</p>
                         </div>
-                        <div class="right"><i class="fa-solid fa-trash-can"></i></div>
+                        <div class="right"><i class="fa-solid fa-trash-can delete-btn cursor-pointer"></i></div>
                     </div>
                     <p class="text-[#64748B] mb-5">Remote
                         •
@@ -218,17 +218,17 @@
                     <p class="text-[#323B49] mb-4">Join our fast-growing startup and work on our core platform.
                         Experience with Node.js and React required. Great benefits and equity package included.</p>
                     <div>
-                        <button class="btn btn-success btn-soft border border-green-400">Interview</button>
-                        <button class="btn btn-error btn-soft border border-red-400">Rejected</button>
+                        <button class="btn btn-success interview-btn btn-soft border border-green-400">Interview</button>
+                        <button class="btn btn-error reject-btn btn-soft border border-red-400">Rejected</button>
                     </div>
                 </div>
-                <div class="card border border-[#F1F2F4] p-4">
+                <div class="card job-card border border-[#F1F2F4] p-4" data-status="all">
                     <div class="flex items-center justify-between">
                         <div class="left mb-5">
                             <h2 class="font-bold text-[#002C5C] text-xl">TechCorp Industries</h2>
                             <p class="text-[#64748B] font-medium">Senior Frontend Developer</p>
                         </div>
-                        <div class="right"><i class="fa-solid fa-trash-can"></i></div>
+                        <div class="right"><i class="fa-solid fa-trash-can delete-btn cursor-pointer"></i></div>
                     </div>
                     <p class="text-[#64748B] mb-5">San Francisco, CA
                         •
@@ -241,12 +241,14 @@
                         scalable web applications using React and TypeScript. You will work with a talented team on
                         cutting-edge projects.</p>
                     <div>
-                        <button class="btn btn-success btn-soft border border-green-400">Interview</button>
-                        <button class="btn btn-error btn-soft border border-red-400">Rejected</button>
+                        <button class="btn btn-success interview-btn btn-soft border border-green-400">Interview</button>
+                        <button class="btn btn-error reject-btn btn-soft border border-red-400">Rejected</button>
                     </div>
                 </div>
             </div>
     </section>
+
+    <script src="./script/script.js"></script>
 </body>
 
 </html>
