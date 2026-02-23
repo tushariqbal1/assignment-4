@@ -73,18 +73,52 @@ function changeDashboard() {
     jobCountElement.innerText = `${allCards.length} jobs`
 }
 
+// function filterJobs(jobs) {
+//     const allCards = document.querySelectorAll('.job-card');
+//     allCards.forEach(card => {
+//         if (jobs === 'all') {
+//             card.style.display = 'block'
+//         }
+//         else {
+//             card.style.display = card.getAttribute('data-status') === jobs ? 'block' : 'none'
+//         }
+//     })
+
+//     [allButton, interviewButton, rejectedButton].forEach(btn => btn.classList.replace('btn-info', 'btn-soft'));
+//     event.currentTarget.classList.replace('btn-soft', 'btn-info');
+// }
+
+
 function filterJobs(jobs) {
     const allCards = document.querySelectorAll('.job-card');
-    allCards.forEach(card => {
-        if (jobs === 'all') {
-            card.style.display = 'block'
+    const noJobsAvailable = document.getElementById('no-jobs-available');
+
+    let showCount = 0;
+
+    allCards.forEach(card=>{
+        if(jobs === 'all'){
+            card.style.display = 'block';
+            showCount++
         }
-        else {
-            card.style.display = card.getAttribute('data-status') === jobs ? 'block' : 'none'
+        else{
+            if(card.getAttribute('data-status') === jobs){
+                card.style.display = 'block';
+                showCount++
+            }
+            else{
+                card.style.display = 'none';
+            }
         }
     })
 
+    if(showCount === 0){
+        noJobsAvailable.classList.remove('hidden');
+    }
+    else{
+        noJobsAvailable.classList.add('hidden');
+    }
     [allButton, interviewButton, rejectedButton].forEach(btn => btn.classList.replace('btn-info', 'btn-soft'));
+    
     event.currentTarget.classList.replace('btn-soft', 'btn-info');
 }
 
@@ -101,7 +135,7 @@ cardContainer.addEventListener('click', (e) => {
         spanBadge.className = 'text-white font-medium bg-success w-[150px] py-2 text-center rounded-md mb-4 inline-block';
     }
 
-    if(e.target.classList.contains('reject-btn')){
+    if (e.target.classList.contains('reject-btn')) {
         card.setAttribute('data-status', 'rejected');
         spanBadge.innerText = 'Rejected';
         spanBadge.className = 'text-white font-medium bg-error w-[150px] py-2 text-center rounded-md mb-4 inline-block';
@@ -114,9 +148,9 @@ cardContainer.addEventListener('click', (e) => {
     changeDashboard();
 })
 
-allButton.addEventListener('click', (e)=> filterJobs('all'));
-interviewButton.addEventListener('click', (e)=> filterJobs('interview'));
-rejectedButton.addEventListener('click', (e)=> filterJobs('rejected'));
+allButton.addEventListener('click', (e) => filterJobs('all'));
+interviewButton.addEventListener('click', (e) => filterJobs('interview'));
+rejectedButton.addEventListener('click', (e) => filterJobs('rejected'));
 
 
 changeDashboard();
