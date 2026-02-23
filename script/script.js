@@ -25,23 +25,8 @@ function changeDashboard() {
     jobCountElement.innerText = `${allCards.length} jobs`
 }
 
-// function filterJobs(jobs) {
-//     const allCards = document.querySelectorAll('.job-card');
-//     allCards.forEach(card => {
-//         if (jobs === 'all') {
-//             card.style.display = 'block'
-//         }
-//         else {
-//             card.style.display = card.getAttribute('data-status') === jobs ? 'block' : 'none'
-//         }
-//     })
 
-//     [allButton, interviewButton, rejectedButton].forEach(btn => btn.classList.replace('btn-info', 'btn-soft'));
-//     event.currentTarget.classList.replace('btn-soft', 'btn-info');
-// }
-
-
-function filterJobs(jobs) {
+function filterJobs(jobs, event) {
     const allCards = document.querySelectorAll('.job-card');
     const noJobsAvailable = document.getElementById('no-jobs-available');
 
@@ -100,9 +85,10 @@ cardContainer.addEventListener('click', (e) => {
     changeDashboard();
 })
 
-allButton.addEventListener('click', (e) => filterJobs('all'));
-interviewButton.addEventListener('click', (e) => filterJobs('interview'));
-rejectedButton.addEventListener('click', (e) => filterJobs('rejected'));
+
+allButton.addEventListener('click', (e) => filterJobs('all', e));
+interviewButton.addEventListener('click', (e) => filterJobs('interview', e));
+rejectedButton.addEventListener('click', (e) => filterJobs('rejected', e));
 
 
 changeDashboard();
