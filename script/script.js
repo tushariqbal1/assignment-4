@@ -4,6 +4,7 @@ const totalCountElement = document.getElementById('total-count');
 const interviewCountElement = document.getElementById('interview-count');
 const rejectedCountElement = document.getElementById('rejected-count');
 const jobCountElement = document.getElementById('jobs-count')
+let activeFilter = 'all';
 
 
 // Tab er button gula k dhorte hobe
@@ -27,35 +28,36 @@ function changeDashboard() {
 
 
 function filterJobs(jobs, event) {
+    activeFilter = jobs;
     const allCards = document.querySelectorAll('.job-card');
     const noJobsAvailable = document.getElementById('no-jobs-available');
 
     let showCount = 0;
 
-    allCards.forEach(card=>{
-        if(jobs === 'all'){
+    allCards.forEach(card => {
+        if (jobs === 'all') {
             card.style.display = 'block';
             showCount++
         }
-        else{
-            if(card.getAttribute('data-status') === jobs){
+        else {
+            if (card.getAttribute('data-status') === jobs) {
                 card.style.display = 'block';
                 showCount++
             }
-            else{
+            else {
                 card.style.display = 'none';
             }
         }
     })
 
-    if(showCount === 0){
+    if (showCount === 0) {
         noJobsAvailable.classList.remove('hidden');
     }
-    else{
+    else {
         noJobsAvailable.classList.add('hidden');
     }
     [allButton, interviewButton, rejectedButton].forEach(btn => btn.classList.replace('btn-info', 'btn-soft'));
-    
+
     event.currentTarget.classList.replace('btn-soft', 'btn-info');
 }
 
@@ -83,6 +85,7 @@ cardContainer.addEventListener('click', (e) => {
 
     }
     changeDashboard();
+    filterJobs(activeFilter);
 })
 
 
@@ -90,8 +93,8 @@ allButton.addEventListener('click', (e) => filterJobs('all', e));
 interviewButton.addEventListener('click', (e) => filterJobs('interview', e));
 rejectedButton.addEventListener('click', (e) => filterJobs('rejected', e));
 
-
 changeDashboard();
+
 
 
 
